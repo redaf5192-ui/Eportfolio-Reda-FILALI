@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reda Filali | E-Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a8a; /* Deep Blue */
+            --secondary-color: #3b82f6; /* Lighter Blue */
+            --bg-color: #f1f5f9; /* Light Gray/Blue background */
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .hero img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin: 0.5rem 0 1.5rem 0;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 10px 24px;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        /* NAVIGATION */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .nav-link {
+            background: none;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        /* MAIN CONTENT & CARDS */
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--secondary-color);
+            margin-top: 1.5rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* VIDEO & ROLE MODELS GRID */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-item {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <img src="img/image perso.jpeg" alt="Reda Filali">
+        <h1>Reda Filali</h1>
+        <p>Engineering Student in Digital Sciences | ENSEEIHT (Toulouse INP)<br>
+        <i>Previous Education: CPGE MP at Lycée d'Excellence LYMED</i></p>
+        <div>
+           <a href="img/CV English - Reda Filali (2).pdf" class="btn" target="_blank">Download CV (EN)</a><a href="img/CV Français - Reda Filali.pdf" class="btn" target="_blank">Download CV (FR)</a>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-container">
+        <button class="nav-link active" onclick="openTab(event, 'Welcome')">Welcome</button>
+        <button class="nav-link" onclick="openTab(event, 'Engineering')">Engineering Course</button>
+        <button class="nav-link" onclick="openTab(event, 'Mobility')">International Mobility</button>
+        <button class="nav-link" onclick="openTab(event, 'Sustainability')">Sustainability</button>
+        <button class="nav-link" onclick="openTab(event, 'Sport')">Sports & Hobbies</button>
+        <button class="nav-link" onclick="openTab(event, 'Career')">Career Development</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        
+        <!-- Welcome Tab -->
+        <div id="Welcome" class="tab-content active">
+            <div class="card">
+                <h2>Welcome to my e-Portfolio</h2>
+                <p>Hello, I am Reda Filali. Passionate about computer science, applied mathematics, and engineering, this portfolio traces my journey within the Digital Sciences department at ENSEEIHT. Here you will find my academic projects, my commitments, and my professional project.</p>
+            </div>
+        </div>
+
+        <!-- Engineering Tab -->
+        <div id="Engineering" class="tab-content">
+            <div class="card">
+                <h2>Engineering Course</h2>
+                <h3>Project: The Guessing Game (Ada Programming)</h3>
+                <p>As part of my learning in imperative programming, I designed and developed the "Guessing Game". This project was implemented in the <strong>Ada</strong> language, strictly applying <strong>code refinement</strong> methods to ensure the robustness, logic, and readability of the software architecture.</p>
+            </div>
+        </div>
+
+        <!-- Mobility Tab -->
+        <div id="Mobility" class="tab-content">
+            <div class="card">
+                <h2>International Mobility</h2>
+                <p>In line with my curriculum and my professional role models, here are 3 international mobility tracks I am considering:</p>
+                <ul>
+                    <li><strong>Track 1:</strong> An R&D internship in software engineering or cybersecurity in a neighboring European country (e.g., Switzerland or Germany).</li>
+                    <li><strong>Track 2:</strong> An academic exchange semester focusing on networks or embedded systems architectures (FPGA).</li>
+                    <li><strong>Track 3:</strong> A technical application internship in full-stack development within a tech company abroad.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sustainability Tab -->
+        <div id="Sustainability" class="tab-content">
+            <div class="card">
+                <h2>Sustainability & Civic Engagement</h2>
+                <p><em>Coming soon:</em> Looking for opportunities for student association involvement or projects with an ecological impact within ENSEEIHT and the city of Toulouse for the upcoming years of study.</p>
+            </div>
+        </div>
+
+        <!-- Sport Tab -->
+        <div id="Sport" class="tab-content">
+            <div class="card">
+                <h2>Sports & Hobbies</h2>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h3 style="margin-top:0">⚽ Football</h3>
+                        <p>Regular team practice on synthetic turf.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3 style="margin-top:0">♟️ Chess</h3>
+                        <p>Developing strategic thinking and anticipation.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3 style="margin-top:0">⛰️ Hiking</h3>
+                        <p>Outdoor exploration and pushing personal limits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Career Tab -->
+        <div id="Career" class="tab-content">
+            <div class="card">
+                <h2>Career Development</h2>
+                
+                <h3>My Unique Value Proposition (UVP)</h3>
+                <div class="video-container">
+                    <!-- REPLACE YOUR_VIDEO_ID WITH YOUTUBE ID -->
+                   <iframe src="https://www.youtube.com/embed/yRqQOGnEbsM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <h3>My Role Models</h3>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h4 style="margin-top:0; color:var(--primary-color)">1. Zacharie Igor</h4>
+                        <p><em>Cybersecurity Engineer (Toulouse INP-ENSEEIHT)</em></p>
+                        <p><strong>Background:</strong> Double degree in software engineering and cybersecurity (TLS-SEC).</p>
+                        <p><strong>Inspiration:</strong> His comprehensive expertise combining full-stack development, infrastructure security, and ERP risk management matches my interest in complete and secure systems.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4 style="margin-top:0; color:var(--primary-color)">2. Mathilde</h4>
+                        <p><em>FPGA / Digital Electronics Engineer</em></p>
+                        <p><strong>Background:</strong> Specialized in programmable electronic chips (FPGA, ASIC, SOC) via the 3EA track.</p>
+                        <p><strong>Inspiration:</strong> Her career progression from an apprenticeship to sectors of excellence (space at EREMS, defense at ARELIS) illustrates the technical power of hardware programming.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4 style="margin-top:0; color:var(--primary-color)">3. Emmanuel</h4>
+                        <p><em>Software Developer & Solutions Designer</em></p>
+                        <p><strong>Background:</strong> Graduated after a scientific prep school, with rich experience ranging from the private to the public sector.</p>
+                        <p><strong>Inspiration:</strong> His ability to gather business needs to design tailor-made and high-performance solutions reflects the direct and concrete impact of software engineering.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            let i, tabcontent, navlinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            navlinks = document.getElementsByClassName("nav-link");
+            for (i = 0; i < navlinks.length; i++) {
+                navlinks[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Optional: Smooth scroll to top of content
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
